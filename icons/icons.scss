@@ -1,0 +1,15 @@
+@mixin setSvgColor($color) {
+  background-color: $color;
+}
+
+@mixin setSvgIcon($src) {
+  -webkit-mask: url($src) no-repeat center;
+  mask: url($src) no-repeat center;
+  mask-size: contain;
+}
+
+@mixin icon-plus {
+  .icon-plus {
+    @include setSvgIcon("/icons/base/plus-icon.svg");
+  }
+}

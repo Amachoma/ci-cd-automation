@@ -1,0 +1,89 @@
+@use 'utils/utils';
+
+.controls-checkbox {
+  @include utils.defaultButtonReset;
+  display: flex;
+  position: absolute;
+  width: var(--checkbox-size);
+  height: var(--checkbox-size);
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+
+
+  &__background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--rc-border-color);
+    border-radius: inherit;
+    transition: border-width ease 0.25s, border-color ease 0.25s;
+  }
+
+  &__tick-mark {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 72%;
+    height: 72%;
+    transform: rotate(-45deg);
+
+    &::before,
+    &::after {
+      content: "";
+      border-radius: 2px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      background-color: var(--rc-tick-color);
+      transition: transform ease 0.3s 0.1s;
+    }
+
+    &::before {
+      width: 20%;
+      height: 60%;
+      transform-origin: left;
+      transform: translateY(-200%);
+    }
+
+    &::after {
+      height: 20%;
+      width: 100%;
+      transform: translateX(200%);
+    }
+  }
+
+  &_checked {
+    .controls-checkbox {
+      &__background {
+        border-width: calc(var(--checkbox-size) / 2);
+        border-color: var(--rc-ticked-border-color);
+      }
+
+      &__tick-mark {
+        &::before {
+          transform: translateY(0);
+        }
+
+        &::after {
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  --rc-border-color: whitesmoke;
+  --rc-ticked-border-color: #222;
+  --rc-tick-color: whitesmoke;
+}
+
+[data-theme='light'] {
+  --rc-border-color: #555;
+  --rc-ticked-border-color: #555;
+  --rc-tick-color: whitesmoke;
+}
