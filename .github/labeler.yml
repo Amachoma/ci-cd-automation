@@ -1,0 +1,8 @@
+frontend:
+  - any: ['**/*.ts', '**/*.tsx']
+
+jest:
+  - '**/*.test.js'
+
+workflow:
+  - '.github/workflows/**'
