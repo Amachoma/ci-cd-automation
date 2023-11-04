@@ -1,0 +1,33 @@
+name: Jest Automatic Testing
+
+# Event triggers on pull request event
+# More detail at https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on
+on: pull_request
+
+# More detail on this section at https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobs
+jobs:
+  run-jest-tests:
+    name: Jest Tesing
+    # Info on machines available https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
+    runs-on: ubuntu-latest
+
+    # Steps this job must take to complete
+    steps:
+      # Reference the master branch. For more information visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
+      - name: Checkout under $GITHUB_WORKSPACE
+        uses: actions/checkout@master
+
+      # https://docs.github.com/en/actions/guides/building-and-testing-nodejs#specifying-the-nodejs-version
+      - name: Set up NodeJS
+        uses: actions/setup-node@v1
+        with:
+          node-version: 18
+
+      - name: Install yarn
+        run: npm install --global yarn
+        
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Jest Tests
+        run: yarn test
