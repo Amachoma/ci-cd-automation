@@ -10,7 +10,7 @@ on: [pull_request_target]
 
 jobs:
   label:
-
+    name: Add labels
     runs-on: ubuntu-latest
     permissions:
       contents: read
