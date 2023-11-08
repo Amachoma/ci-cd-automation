@@ -15,7 +15,9 @@ jobs:
     steps:
       # Reference the master branch. For more information visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
       - name: Checkout branch
-        uses: actions/checkout@master
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Cache dependencies
         uses: actions/cache@v2
@@ -41,15 +43,19 @@ jobs:
         uses: tj-actions/changed-files@v40
         id: changed-files
         with:
-          files: components/**
+          files: |
+           components/**
 
       - name: Show changes
         shell: bash
         run: |
-          for file in ${{ steps.changed-files.outputs.all_modified_files }}
+          echo "Changed files are:"
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}
           do
             echo "${file}"
           done
+          echo "End of changed files"
+          
 
       - name: Run Jest tests
         if: steps.changed-files.outputs.any_changes == 'true'

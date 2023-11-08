@@ -1,3 +1,3 @@
 export default function SmthDifferent() {
-    return undefined
+    return "I have no idea what changed here"
 }
