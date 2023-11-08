@@ -15,9 +15,9 @@ jobs:
     steps:
       # Reference the master branch. For more information visit https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsuses
       - name: Checkout branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v2
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.ref }}
 
       - name: Cache dependencies
         uses: actions/cache@v2

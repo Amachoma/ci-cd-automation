@@ -5,7 +5,7 @@ import React from "react";
 import "simplebar-react/dist/simplebar.min.css";
 
 interface DeviceScrollbarProps {
-    className: string;
+    className?: string;
     children: ReactNode;
     scrollRef?: React.RefObject<HTMLDivElement>;
     onScrollCapture?: () => void;
