@@ -39,25 +39,24 @@ jobs:
       - run: npm install --global yarn
       - run: yarn install --frozen-lockfile
 
+      - run: git rev-parse --abbrev-ref HEAD
+
       - name: Get changed files inside components folder
         uses: tj-actions/changed-files@v40
         id: changed-files
         with:
-          files: |
-           components/**
+          files_yaml: |
+            components:
+              - components/**
 
-      - name: Show changes
-        shell: bash
-        run: |
-          echo "Changed files are:"
-          for file in ${{ steps.changed-files.outputs.all_changed_files }}
-          do
-            echo "${file}"
-          done
-          echo "${steps.changed-files.outputs.any_changes}"
-          echo "End of changed files"
-          
+#      - name: Show changes
+#        shell: bash
+#        run: |
+#          for file in ${{ steps.changed-files.outputs.all_modified_files }}
+#          do
+#            echo "${file}"
+#          done
 
       - name: Run Jest tests
-        if: steps.changed-files.outputs.any_changes == 'true'
-        run: yarn test
+        if: steps.changed-files.outputs.components_any_changed  == 'true'
+        run: yarn test:components

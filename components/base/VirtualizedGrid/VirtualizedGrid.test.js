@@ -255,9 +255,9 @@ describe("Grid With Virtualization", () => {
     describe("Basic features", () => {
         it("Should use correct config after initialization", () => {
             const config = [
-                { width: 1600, height: 900, expectedCount: 5+1 },
-                { width: 1000, height: 400, expectedCount: 3+1 },
-                { width: 320, height: 720, expectedCount: 1+1 },
+                { width: 1600, height: 900, expectedCount: 5 },
+                { width: 1000, height: 400, expectedCount: 3 },
+                { width: 320, height: 720, expectedCount: 1 },
             ];
 
             config.forEach(({ width, height, expectedCount }) => {
