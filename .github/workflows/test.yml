@@ -45,6 +45,7 @@ jobs:
         uses: tj-actions/changed-files@v40
         id: changed-files
         with:
+          continue-on-error: true
           files_yaml: |
             components:
               - components/**
