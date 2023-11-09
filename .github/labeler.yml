@@ -2,8 +2,8 @@ frontend:
   - 'components/**/*.tsx'
   - 'components/**/*.ts'
 
-jest:
+test/jest:
   - '**/*.test.js'
 
-workflow:
+other/workflow:
   - '.github/**'
