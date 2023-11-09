@@ -8,6 +8,9 @@
 # testing
 /coverage
 
+# nektos/act
+.act/*
+
 # next.js
 /.next/
 /out/
