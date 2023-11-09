@@ -1,6 +1,6 @@
 frontend:
-  - './**/*.tsx'
-  - './**/*.ts'
+  - 'components/**/*.tsx'
+  - 'components/**/*.ts'
 
 jest:
   - '**/*.test.js'
