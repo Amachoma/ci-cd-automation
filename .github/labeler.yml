@@ -6,4 +6,4 @@ jest:
   - '**/*.test.js'
 
 workflow:
-  - '.github/workflows/**'
+  - '.github/**'
