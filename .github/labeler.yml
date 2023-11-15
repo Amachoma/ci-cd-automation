@@ -1,9 +1,20 @@
-frontend:
-  - './**/*.tsx'
-  - './**/*.ts'
+frontend/components:
+  - 'components/**/*.tsx'
+  - 'components/**/*.ts'
 
-jest:
-  - '**/*.test.js'
+test/components:
+  - 'components/**/*.test.js'
 
-workflow:
-  - '.github/workflows/**'
+frontend/pages:
+  - any: [ 'app/**/*.tsx', 'app/**/*.ts' ]
+    all: [ '!app/api/**', '!app/favicon.ico' ]
+
+frontend/hooks:
+  - 'hooks/**/*.tsx'
+  - 'hooks/**/*.ts'
+
+test/hooks:
+  - 'hooks/**/*.test.js'
+
+other/workflow:
+  - '.github/**'
